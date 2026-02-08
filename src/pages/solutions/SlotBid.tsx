@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { useState, useEffect, useRef } from 'react';
-import { ArrowLeft, Gavel, BarChart3, TrendingUp, Clock, DollarSign, AlertTriangle, ExternalLink, Anchor, Users, Zap, Target, CheckCircle, XCircle, Timer, ArrowUpRight, ChevronRight, Sparkles, Activity } from 'lucide-react';
+import type { ReactNode } from 'react';
+import { ArrowLeft, Gavel, BarChart3, TrendingUp, Clock, DollarSign, AlertTriangle, Anchor, Users, Zap, Target, CheckCircle, XCircle, Timer, ArrowUpRight, ChevronRight, Sparkles, Activity } from 'lucide-react';
 
 // ─────────────────────────────────────────────────────────────
 // Types
@@ -120,13 +121,13 @@ const vesselClassColors: Record<VesselClass, string> = {
   ULCV: 'bg-indigo-100 text-indigo-800',
 };
 
-const statusColors: Record<BidStatus, { bg: string; text: string; icon: JSX.Element }> = {
+const statusColors: Record<BidStatus, { bg: string; text: string; icon: ReactNode }> = {
   Won: { bg: 'bg-emerald-100', text: 'text-emerald-700', icon: <CheckCircle className="w-3.5 h-3.5" /> },
   Outbid: { bg: 'bg-red-100', text: 'text-red-700', icon: <XCircle className="w-3.5 h-3.5" /> },
   Pending: { bg: 'bg-amber-100', text: 'text-amber-700', icon: <Timer className="w-3.5 h-3.5" /> },
 };
 
-function StatCard({ label, value, sublabel, icon }: { label: string; value: string | number; sublabel?: string; icon?: JSX.Element }) {
+function StatCard({ label, value, sublabel, icon }: { label: string; value: string | number; sublabel?: string; icon?: ReactNode }) {
   return (
     <div className="bg-white rounded-xl border border-gray-200 p-4 shadow-sm">
       <div className="flex items-center gap-2 mb-1">
@@ -629,7 +630,7 @@ export default function SlotBid() {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState<TabId>('live-auction');
 
-  const tabs: { id: TabId; label: string; icon: JSX.Element }[] = [
+  const tabs: { id: TabId; label: string; icon: ReactNode }[] = [
     { id: 'live-auction', label: 'Live Auction', icon: <Gavel className="w-4 h-4" /> },
     { id: 'place-bid', label: 'Place Bid', icon: <DollarSign className="w-4 h-4" /> },
     { id: 'analytics', label: 'Analytics', icon: <BarChart3 className="w-4 h-4" /> },
@@ -656,14 +657,6 @@ export default function SlotBid() {
                 <p className="text-xs text-gray-500">Dynamic Berth Slot Auction & AI Bid Optimization</p>
               </div>
             </div>
-            <a
-              href="https://github.com/tmeren"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-1.5 rounded-lg border border-gray-200 px-3 py-1.5 text-sm text-gray-600 hover:bg-gray-50 transition-colors"
-            >
-              <ExternalLink className="w-3.5 h-3.5" /> GitHub
-            </a>
           </div>
         </div>
       </header>

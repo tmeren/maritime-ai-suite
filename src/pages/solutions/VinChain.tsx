@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-import { ArrowLeft, Search, Car, Leaf, QrCode, ExternalLink, Factory, MapPin, Fuel, Calendar, Hash, Shield, ChevronRight, Info, Copy, Check, Fingerprint, Globe, Gauge } from 'lucide-react';
+import type { ReactNode } from 'react';
+import { ArrowLeft, Search, Car, Leaf, QrCode, Factory, MapPin, Fuel, Calendar, Hash, Shield, ChevronRight, Info, Copy, Check, Fingerprint, Globe, Gauge } from 'lucide-react';
 import { QRCodeSVG } from 'qrcode.react';
 
 // ─────────────────────────────────────────────────────────────
@@ -137,7 +138,7 @@ function CO2RatingBadge({ rating }: { rating: string }) {
   );
 }
 
-function StatCard({ label, value, sublabel, icon }: { label: string; value: string | number; sublabel?: string; icon?: JSX.Element }) {
+function StatCard({ label, value, sublabel, icon }: { label: string; value: string | number; sublabel?: string; icon?: ReactNode }) {
   return (
     <div className="bg-white rounded-xl border border-gray-200 p-4 shadow-sm">
       <div className="flex items-center gap-2 mb-1">
@@ -586,7 +587,7 @@ export default function VinChain() {
     setSelectedVehicle(demoVehicles[vin] || null);
   };
 
-  const tabs: { id: TabId; label: string; icon: JSX.Element }[] = [
+  const tabs: { id: TabId; label: string; icon: ReactNode }[] = [
     { id: 'lookup', label: 'VIN Lookup', icon: <Search className="w-4 h-4" /> },
     { id: 'co2', label: 'CO₂ Footprint', icon: <Leaf className="w-4 h-4" /> },
     { id: 'qr-passport', label: 'QR Passport', icon: <QrCode className="w-4 h-4" /> },
@@ -613,14 +614,6 @@ export default function VinChain() {
                 <p className="text-xs text-gray-500">Interactive Vehicle Passport Demo — Decode, Trace, Verify</p>
               </div>
             </div>
-            <a
-              href="https://github.com/tmeren"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-1.5 rounded-lg border border-gray-200 px-3 py-1.5 text-sm text-gray-600 hover:bg-gray-50 transition-colors"
-            >
-              <ExternalLink className="w-3.5 h-3.5" /> GitHub
-            </a>
           </div>
         </div>
       </header>

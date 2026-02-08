@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-import { ArrowLeft, Zap, Shield, Thermometer, Battery, Ship, MapPin, Activity, FileText, ChevronRight, ExternalLink, Flame, Eye, BarChart3, Gauge } from 'lucide-react';
+import type { ReactNode } from 'react';
+import { ArrowLeft, Zap, Shield, Thermometer, Battery, Ship, MapPin, Activity, FileText, ChevronRight, Flame, Eye, BarChart3, Gauge } from 'lucide-react';
 
 // ─────────────────────────────────────────────────────────────
 // Types
@@ -433,7 +434,7 @@ export default function LithiumSentinel() {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState<TabId>('overview');
 
-  const tabs: { id: TabId; label: string; icon: JSX.Element }[] = [
+  const tabs: { id: TabId; label: string; icon: ReactNode }[] = [
     { id: 'overview', label: 'Overview', icon: <Shield className="w-4 h-4" /> },
     { id: 'fleet', label: 'Fleet', icon: <Ship className="w-4 h-4" /> },
     { id: 'risk-engine', label: 'Risk Engine', icon: <Thermometer className="w-4 h-4" /> },
@@ -461,14 +462,6 @@ export default function LithiumSentinel() {
                 <p className="text-xs text-gray-500">EV Battery Fire Risk Management for Port Operations</p>
               </div>
             </div>
-            <a
-              href="https://github.com/tmeren/Lithium-Sentinel"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-1.5 rounded-lg border border-gray-200 px-3 py-1.5 text-sm text-gray-600 hover:bg-gray-50 transition-colors"
-            >
-              <ExternalLink className="w-3.5 h-3.5" /> GitHub
-            </a>
           </div>
         </div>
       </header>

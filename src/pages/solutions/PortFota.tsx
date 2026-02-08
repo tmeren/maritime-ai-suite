@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-import { ArrowLeft, BarChart3, Shield, Download, AlertTriangle, CheckCircle, ExternalLink, Activity, Sparkles, Clock, Server, Layers, ChevronRight, Radio } from 'lucide-react';
+import type { ReactNode } from 'react';
+import { ArrowLeft, BarChart3, Shield, Download, AlertTriangle, CheckCircle, Activity, Sparkles, Clock, Server, Layers, ChevronRight, Radio } from 'lucide-react';
 
 // ─────────────────────────────────────────────────────────────
 // Types
@@ -150,7 +151,7 @@ const strategyConfig: Record<RolloutStrategy, string> = {
   Immediate: 'bg-orange-100 text-orange-700',
 };
 
-function StatCard({ label, value, sublabel, icon }: { label: string; value: string | number; sublabel?: string; icon?: JSX.Element }) {
+function StatCard({ label, value, sublabel, icon }: { label: string; value: string | number; sublabel?: string; icon?: ReactNode }) {
   return (
     <div className="bg-white rounded-xl border border-gray-200 p-4 shadow-sm">
       <div className="flex items-center gap-2 mb-1">
@@ -490,7 +491,7 @@ function AnalyticsTab() {
 // Main Component
 // ─────────────────────────────────────────────────────────────
 
-const tabs: { id: TabId; label: string; icon: JSX.Element }[] = [
+const tabs: { id: TabId; label: string; icon: ReactNode }[] = [
   { id: 'fleet-status', label: 'Fleet Status', icon: <Server className="w-3.5 h-3.5" /> },
   { id: 'update-campaigns', label: 'Update Campaigns', icon: <Download className="w-3.5 h-3.5" /> },
   { id: 'analytics', label: 'Analytics & Compliance', icon: <BarChart3 className="w-3.5 h-3.5" /> },
@@ -521,14 +522,6 @@ export default function PortFota() {
                 <p className="text-xs text-gray-500">In-Port OTA Firmware Update Center — Fleet Device Management</p>
               </div>
             </div>
-            <a
-              href="https://github.com/tmeren"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-1.5 rounded-lg border border-gray-200 px-3 py-1.5 text-sm text-gray-600 hover:bg-gray-50 transition-colors"
-            >
-              <ExternalLink className="w-3.5 h-3.5" /> GitHub
-            </a>
           </div>
         </div>
       </header>

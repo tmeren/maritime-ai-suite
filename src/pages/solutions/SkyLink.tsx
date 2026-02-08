@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-import { ArrowLeft, BarChart3, Plane, AlertTriangle, CheckCircle, ExternalLink, Activity, Sparkles, Clock, Package, Battery, Navigation2, MapPin, Target, Wind, Eye, ChevronRight, Send } from 'lucide-react';
+import type { ReactNode } from 'react';
+import { ArrowLeft, BarChart3, Plane, AlertTriangle, CheckCircle, Activity, Sparkles, Clock, Package, Battery, Navigation2, MapPin, Target, Wind, Eye, ChevronRight, Send } from 'lucide-react';
 
 // ─────────────────────────────────────────────────────────────
 // Types
@@ -113,7 +114,7 @@ const priorityConfig: Record<MissionPriority, string> = {
   Standard: 'bg-gray-100 text-gray-600',
 };
 
-function StatCard({ label, value, sublabel, icon }: { label: string; value: string | number; sublabel?: string; icon?: JSX.Element }) {
+function StatCard({ label, value, sublabel, icon }: { label: string; value: string | number; sublabel?: string; icon?: ReactNode }) {
   return (
     <div className="bg-white rounded-xl border border-gray-200 p-4 shadow-sm">
       <div className="flex items-center gap-2 mb-1">
@@ -522,7 +523,7 @@ function AnalyticsTab() {
 // Main Component
 // ─────────────────────────────────────────────────────────────
 
-const tabs: { id: TabId; label: string; icon: JSX.Element }[] = [
+const tabs: { id: TabId; label: string; icon: ReactNode }[] = [
   { id: 'fleet-dashboard', label: 'Drone Fleet', icon: <Plane className="w-3.5 h-3.5" /> },
   { id: 'mission-control', label: 'Mission Control', icon: <MapPin className="w-3.5 h-3.5" /> },
   { id: 'analytics', label: 'Analytics & Safety', icon: <BarChart3 className="w-3.5 h-3.5" /> },
@@ -553,14 +554,6 @@ export default function SkyLink() {
                 <p className="text-xs text-gray-500">Autonomous Drone Ship-Shore Delivery Network — Khalifa Port</p>
               </div>
             </div>
-            <a
-              href="https://github.com/tmeren"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-1.5 rounded-lg border border-gray-200 px-3 py-1.5 text-sm text-gray-600 hover:bg-gray-50 transition-colors"
-            >
-              <ExternalLink className="w-3.5 h-3.5" /> GitHub
-            </a>
           </div>
         </div>
       </header>
