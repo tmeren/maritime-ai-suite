@@ -106,8 +106,8 @@ export function Sidebar({ collapsed, onToggle }: SidebarProps) {
               className={({ isActive }) =>
                 `flex items-center gap-3 px-3 py-2 rounded-lg text-sm transition-colors ${
                   isActive
-                    ? 'bg-sidebar-active text-sidebar-text-active font-medium'
-                    : 'text-sidebar-text hover:bg-sidebar-hover hover:text-sidebar-text-active'
+                    ? 'bg-sidebar-active text-sidebar-text-active font-medium border-l-[3px] border-ad-red'
+                    : 'text-sidebar-text hover:bg-sidebar-hover hover:text-sidebar-text-active border-l-[3px] border-transparent'
                 }`
               }
               title={collapsed ? item.label : undefined}
@@ -158,8 +158,8 @@ export function Sidebar({ collapsed, onToggle }: SidebarProps) {
                   className={({ isActive }) =>
                     `flex items-center gap-2.5 px-2.5 py-1.5 rounded-md text-[13px] transition-colors ${
                       isActive
-                        ? 'bg-sidebar-active text-sidebar-text-active font-medium'
-                        : 'text-sidebar-text hover:bg-sidebar-hover hover:text-sidebar-text-active'
+                        ? 'bg-sidebar-active text-sidebar-text-active font-medium border-l-[3px] border-ad-red'
+                        : 'text-sidebar-text hover:bg-sidebar-hover hover:text-sidebar-text-active border-l-[3px] border-transparent'
                     }`
                   }
                 >
