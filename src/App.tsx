@@ -4,10 +4,6 @@ import { Home } from './pages/Home'
 import { PlaceholderPage } from './pages/PlaceholderPage'
 import { lazy, Suspense } from 'react'
 import {
-  DollarSign,
-  Settings,
-  BarChart3,
-  Target,
   ShieldAlert,
   MessageSquare,
   FileSearch,
@@ -16,6 +12,11 @@ import {
   BookOpen,
   Trophy,
 } from 'lucide-react'
+
+const FinancialAnalytics = lazy(() => import('./pages/FinancialAnalytics'))
+const OperationalAnalytics = lazy(() => import('./pages/OperationalAnalytics'))
+const MarketAnalytics = lazy(() => import('./pages/MarketAnalytics'))
+const StrategicAnalytics = lazy(() => import('./pages/StrategicAnalytics'))
 
 const CarbonWise = lazy(() => import('./pages/solutions/CarbonWisePage'))
 const LoadMaster = lazy(() => import('./pages/solutions/LoadMasterPage'))
@@ -46,59 +47,11 @@ export default function App() {
         <Route element={<AppLayout />}>
           <Route index element={<Home />} />
 
-          {/* Module Placeholder Pages with rich content */}
-          <Route path="financial" element={
-            <PlaceholderPage
-              title="Financial Overview"
-              description="DD-grade financial analytics with 3-statement model integration. Track revenue, EBITDA, working capital, and cash flow metrics with full IS/BS/CF audit trails."
-              icon={DollarSign}
-              features={[
-                { title: 'Income Statement Analytics', description: 'Revenue growth, EBITDA margins, cost structure analysis with YoY comparisons and trend identification.' },
-                { title: 'Balance Sheet Deep-Dive', description: 'Asset utilization, debt structure, working capital optimization with covenant tracking.' },
-                { title: 'Cash Flow Waterfall', description: 'Operating, investing, and financing cash flow visualization with free cash flow bridge analysis.' },
-                { title: '3-Statement Model', description: 'Integrated financial model connecting IS, BS, and CF with scenario analysis capabilities.' },
-              ]}
-            />
-          } />
-          <Route path="operations" element={
-            <PlaceholderPage
-              title="Operations Analytics"
-              description="Fleet, port, and intermodal operational intelligence. Real-time throughput monitoring, vessel turnaround analysis, and efficiency benchmarking."
-              icon={Settings}
-              features={[
-                { title: 'Throughput Dashboard', description: 'Real-time TEU/vehicle throughput with historical trends and capacity utilization metrics.' },
-                { title: 'Vessel Turnaround', description: 'Port call analytics, berth utilization, crane productivity, and dwell time optimization.' },
-                { title: 'Fleet Performance', description: 'Vessel efficiency scores, fuel consumption tracking, and route optimization insights.' },
-                { title: 'Intermodal Analytics', description: 'Truck gate movements, rail connectivity, and last-mile delivery performance metrics.' },
-              ]}
-            />
-          } />
-          <Route path="market" element={
-            <PlaceholderPage
-              title="Market Intelligence"
-              description="Trade corridor analysis, competitive positioning, and growth drivers. Monitor global shipping trends and identify strategic opportunities."
-              icon={BarChart3}
-              features={[
-                { title: 'Trade Corridor Analysis', description: 'Volume and value flows across major trade routes with seasonal pattern detection.' },
-                { title: 'Competitive Benchmarking', description: 'Port rankings, market share evolution, and peer group performance comparison.' },
-                { title: 'Growth Driver Index', description: 'Leading indicators for trade volume, GDP correlation, and demand forecasting models.' },
-                { title: 'Commodity Tracking', description: 'Price indices, trade balance analysis, and commodity-specific flow visualization.' },
-              ]}
-            />
-          } />
-          <Route path="strategic" element={
-            <PlaceholderPage
-              title="Strategic Planning"
-              description="Value creation, CAPEX planning, and capability maturity assessment. Long-term portfolio strategy with scenario modeling."
-              icon={Target}
-              features={[
-                { title: 'Value Creation Roadmap', description: 'Strategic initiative tracking with NPV analysis, milestone monitoring, and value bridge visualization.' },
-                { title: 'CAPEX Planning', description: 'Capital expenditure forecasting, project pipeline management, and ROI tracking.' },
-                { title: 'Capability Maturity', description: 'Organizational capability assessment across digital, operational, and commercial dimensions.' },
-                { title: 'Scenario Modeling', description: 'Monte Carlo simulation for strategic scenarios with sensitivity analysis and risk-adjusted returns.' },
-              ]}
-            />
-          } />
+          {/* DD-Grade Analytics Tabs */}
+          <Route path="financial" element={<Suspense fallback={<LoadingFallback />}><FinancialAnalytics /></Suspense>} />
+          <Route path="operations" element={<Suspense fallback={<LoadingFallback />}><OperationalAnalytics /></Suspense>} />
+          <Route path="market" element={<Suspense fallback={<LoadingFallback />}><MarketAnalytics /></Suspense>} />
+          <Route path="strategic" element={<Suspense fallback={<LoadingFallback />}><StrategicAnalytics /></Suspense>} />
           <Route path="risk" element={
             <PlaceholderPage
               title="Risk Management"
