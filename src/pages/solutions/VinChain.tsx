@@ -1,7 +1,7 @@
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import type { ReactNode } from 'react';
-import { ArrowLeft, Search, Car, Leaf, QrCode, Factory, MapPin, Fuel, Calendar, Hash, Shield, ChevronRight, Info, Copy, Check, Fingerprint, Globe, Gauge } from 'lucide-react';
+import { Search, Car, Leaf, QrCode, Factory, MapPin, Fuel, Calendar, Hash, Shield, ChevronRight, Info, Copy, Check, Fingerprint, Globe, Gauge, Home, BarChart3 } from 'lucide-react';
 import { QRCodeSVG } from 'qrcode.react';
 
 // ─────────────────────────────────────────────────────────────
@@ -579,7 +579,6 @@ function QRPassportTab({ vehicle }: { vehicle: VehiclePassport | null }) {
 // ─────────────────────────────────────────────────────────────
 
 export default function VinChain() {
-  const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState<TabId>('lookup');
   const [selectedVehicle, setSelectedVehicle] = useState<VehiclePassport | null>(null);
 
@@ -598,12 +597,15 @@ export default function VinChain() {
       {/* Header */}
       <header className="bg-white border-b border-gray-200 px-6 py-4">
         <div className="max-w-6xl mx-auto">
-          <button
-            onClick={() => navigate('/')}
-            className="flex items-center gap-1 text-sm text-gray-500 hover:text-gray-800 transition-colors mb-3"
-          >
-            <ArrowLeft className="w-4 h-4" /> Back to Home
-          </button>
+          <nav className="flex items-center gap-1.5 text-sm mb-3">
+            <Link to="/" className="flex items-center gap-1 text-gray-400 hover:text-gray-700 transition-colors">
+              <Home className="w-3.5 h-3.5" /> Home
+            </Link>
+            <ChevronRight className="w-3 h-3 text-gray-300" />
+            <Link to="/solutions" className="text-gray-400 hover:text-gray-700 transition-colors">Solutions</Link>
+            <ChevronRight className="w-3 h-3 text-gray-300" />
+            <span className="text-gray-700 font-medium">VinChain Traceability</span>
+          </nav>
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-violet-500 to-indigo-600 flex items-center justify-center shadow-sm">
@@ -614,6 +616,12 @@ export default function VinChain() {
                 <p className="text-xs text-gray-500">Interactive Vehicle Passport Demo — Decode, Trace, Verify</p>
               </div>
             </div>
+            <Link
+              to="/modules/vin-chain"
+              className="flex items-center gap-1.5 rounded-lg border border-gray-200 px-3 py-1.5 text-sm text-gray-600 hover:bg-gray-50 hover:border-gray-300 transition-colors"
+            >
+              <BarChart3 className="w-3.5 h-3.5" /> Module KPIs
+            </Link>
           </div>
         </div>
       </header>

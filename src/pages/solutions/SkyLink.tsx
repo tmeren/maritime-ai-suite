@@ -1,7 +1,7 @@
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import type { ReactNode } from 'react';
-import { ArrowLeft, BarChart3, Plane, AlertTriangle, CheckCircle, Activity, Sparkles, Clock, Package, Battery, Navigation2, MapPin, Target, Wind, Eye, ChevronRight, Send } from 'lucide-react';
+import { BarChart3, Plane, AlertTriangle, CheckCircle, Activity, Sparkles, Clock, Package, Battery, Navigation2, MapPin, Target, Wind, Eye, ChevronRight, Send, Home } from 'lucide-react';
 
 // ─────────────────────────────────────────────────────────────
 // Types
@@ -530,7 +530,6 @@ const tabs: { id: TabId; label: string; icon: ReactNode }[] = [
 ];
 
 export default function SkyLink() {
-  const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState<TabId>('fleet-dashboard');
 
   return (
@@ -538,12 +537,15 @@ export default function SkyLink() {
       {/* Header */}
       <header className="bg-white border-b border-gray-200 pt-20 pb-4">
         <div className="max-w-6xl mx-auto px-6">
-          <button
-            onClick={() => navigate('/')}
-            className="flex items-center gap-1 text-sm text-gray-500 hover:text-gray-700 mb-3 transition-colors"
-          >
-            <ArrowLeft className="w-4 h-4" /> Back to Home
-          </button>
+          <nav className="flex items-center gap-1.5 text-sm mb-3">
+            <Link to="/" className="flex items-center gap-1 text-gray-400 hover:text-gray-700 transition-colors">
+              <Home className="w-3.5 h-3.5" /> Home
+            </Link>
+            <ChevronRight className="w-3 h-3 text-gray-300" />
+            <Link to="/solutions" className="text-gray-400 hover:text-gray-700 transition-colors">Solutions</Link>
+            <ChevronRight className="w-3 h-3 text-gray-300" />
+            <span className="text-gray-700 font-medium">Sky-Link Logistics</span>
+          </nav>
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-violet-500 to-fuchsia-600 flex items-center justify-center shadow-sm">
@@ -554,6 +556,12 @@ export default function SkyLink() {
                 <p className="text-xs text-gray-500">Autonomous Drone Ship-Shore Delivery Network — Khalifa Port</p>
               </div>
             </div>
+            <Link
+              to="/modules/sky-link"
+              className="flex items-center gap-1.5 rounded-lg border border-gray-200 px-3 py-1.5 text-sm text-gray-600 hover:bg-gray-50 hover:border-gray-300 transition-colors"
+            >
+              <BarChart3 className="w-3.5 h-3.5" /> Module KPIs
+            </Link>
           </div>
         </div>
       </header>

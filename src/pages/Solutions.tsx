@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import {
   Leaf,
   Ship,
@@ -12,6 +12,7 @@ import {
   Plane,
   Anchor,
   ArrowRight,
+  BarChart3,
 } from 'lucide-react'
 import type { ReactNode } from 'react'
 
@@ -21,6 +22,7 @@ interface Solution {
   icon: ReactNode
   gradient: string
   bullets: [string, string, string]
+  modulePath?: string
 }
 
 const solutions: Solution[] = [
@@ -56,6 +58,7 @@ const solutions: Solution[] = [
       'IoT sensor fusion: temperature, gas, voltage anomaly detection',
       'Automated emergency protocols and fire suppression zone mapping',
     ],
+    modulePath: '/modules/lithium-sentinel',
   },
   {
     label: 'VinChain',
@@ -67,6 +70,7 @@ const solutions: Solution[] = [
       'Digital passport with CO\u2082 footprint per vehicle journey leg',
       'QR-based customs pre-clearance cutting dwell time by 40%',
     ],
+    modulePath: '/modules/vin-chain',
   },
   {
     label: 'TradeFlow Oracle',
@@ -78,6 +82,7 @@ const solutions: Solution[] = [
       'Commodity price correlation and route profitability analysis',
       'Sanctions and compliance screening integrated into booking flow',
     ],
+    modulePath: '/modules/trade-flow-oracle',
   },
   {
     label: 'SlotBid',
@@ -89,6 +94,7 @@ const solutions: Solution[] = [
       'Priority bidding for time-sensitive cargo with SLA guarantees',
       'Demand-supply matching reducing vessel wait time by 28%',
     ],
+    modulePath: '/modules/slot-bid',
   },
   {
     label: 'BatteryHealth',
@@ -100,6 +106,7 @@ const solutions: Solution[] = [
       'Predictive degradation modelling across temperature and shock events',
       'Insurance-grade risk reports for battery cargo underwriting',
     ],
+    modulePath: '/modules/battery-health',
   },
   {
     label: 'StevedoreAI',
@@ -111,6 +118,7 @@ const solutions: Solution[] = [
       'Fatigue and safety monitoring via computer vision on quayside',
       'Shift planning AI reducing overtime costs by 22%',
     ],
+    modulePath: '/modules/stevedore-ai',
   },
   {
     label: 'PortFOTA',
@@ -122,6 +130,7 @@ const solutions: Solution[] = [
       'Staged rollout with automatic rollback on anomaly detection',
       'Compliance dashboard for firmware version across 3,000+ assets',
     ],
+    modulePath: '/modules/port-fota',
   },
   {
     label: 'SkyLink',
@@ -133,6 +142,7 @@ const solutions: Solution[] = [
       'Real-time airspace deconfliction with manned traffic integration',
       'Battery-swap stations enabling 24/7 drone operations',
     ],
+    modulePath: '/modules/sky-link',
   },
 ]
 
@@ -184,6 +194,18 @@ export default function Solutions() {
                 </li>
               ))}
             </ul>
+
+            {/* Module KPIs Link */}
+            {s.modulePath && (
+              <Link
+                to={s.modulePath}
+                onClick={(e) => e.stopPropagation()}
+                className="mt-4 flex items-center gap-1.5 text-xs text-text-muted hover:text-ad-red transition-colors"
+              >
+                <BarChart3 size={12} />
+                <span>Module KPIs</span>
+              </Link>
+            )}
           </button>
         ))}
       </div>

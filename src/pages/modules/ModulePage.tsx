@@ -1,7 +1,8 @@
-import { useNavigate, Link } from 'react-router-dom'
-import { ArrowLeft, ExternalLink, Lightbulb, TrendingUp, TrendingDown, Minus } from 'lucide-react'
+import { Link } from 'react-router-dom'
+import { ExternalLink, Lightbulb, TrendingUp, TrendingDown, Minus } from 'lucide-react'
 import type { ModuleConfig } from '../../data/moduleKpis'
 import type { FinancialStatement } from '../../components/StatCard'
+import { Breadcrumb } from '../../components/Breadcrumb'
 
 const fsBadgeConfig: Record<FinancialStatement, { label: string; className: string }> = {
   IS: { label: 'IS', className: 'bg-fs-income text-white' },
@@ -21,18 +22,14 @@ interface ModulePageProps {
 }
 
 export default function ModulePage({ module, icon }: ModulePageProps) {
-  const navigate = useNavigate()
-
   return (
     <div className="max-w-6xl mx-auto">
       {/* Header */}
       <div className="mb-8">
-        <button
-          onClick={() => navigate('/')}
-          className="flex items-center gap-1 text-sm text-text-secondary hover:text-text-primary transition-colors mb-4"
-        >
-          <ArrowLeft className="w-4 h-4" /> Back to Dashboard
-        </button>
+        <Breadcrumb items={[
+          { label: 'Modules', path: '/solutions' },
+          { label: module.name },
+        ]} />
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4">
             <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${module.gradient} flex items-center justify-center shadow-sm`}>

@@ -1,7 +1,7 @@
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import type { ReactNode } from 'react';
-import { ArrowLeft, Battery, BarChart3, Shield, TrendingDown, AlertTriangle, CheckCircle, Thermometer, Zap, Activity, ChevronRight, Sparkles, Truck, FileText } from 'lucide-react';
+import { Battery, BarChart3, Shield, TrendingDown, AlertTriangle, CheckCircle, Thermometer, Zap, Activity, ChevronRight, Sparkles, Truck, FileText, Home } from 'lucide-react';
 
 // ─────────────────────────────────────────────────────────────
 // Types
@@ -678,7 +678,6 @@ function AnalyticsTab() {
 // ─────────────────────────────────────────────────────────────
 
 export default function BatteryHealth() {
-  const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState<TabId>('battery-health');
 
   const tabs: { id: TabId; label: string; icon: ReactNode }[] = [
@@ -692,12 +691,15 @@ export default function BatteryHealth() {
       {/* Header */}
       <header className="bg-white border-b border-gray-200 px-6 py-4">
         <div className="max-w-6xl mx-auto">
-          <button
-            onClick={() => navigate('/')}
-            className="flex items-center gap-1 text-sm text-gray-500 hover:text-gray-800 transition-colors mb-3"
-          >
-            <ArrowLeft className="w-4 h-4" /> Back to Home
-          </button>
+          <nav className="flex items-center gap-1.5 text-sm mb-3">
+            <Link to="/" className="flex items-center gap-1 text-gray-400 hover:text-gray-700 transition-colors">
+              <Home className="w-3.5 h-3.5" /> Home
+            </Link>
+            <ChevronRight className="w-3 h-3 text-gray-300" />
+            <Link to="/solutions" className="text-gray-400 hover:text-gray-700 transition-colors">Solutions</Link>
+            <ChevronRight className="w-3 h-3 text-gray-300" />
+            <span className="text-gray-700 font-medium">Battery-Health Guard</span>
+          </nav>
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-500 to-green-600 flex items-center justify-center shadow-sm">
@@ -708,6 +710,12 @@ export default function BatteryHealth() {
                 <p className="text-xs text-gray-500">EV Battery Passport — Health Monitoring & Transport Risk Assessment</p>
               </div>
             </div>
+            <Link
+              to="/modules/battery-health"
+              className="flex items-center gap-1.5 rounded-lg border border-gray-200 px-3 py-1.5 text-sm text-gray-600 hover:bg-gray-50 hover:border-gray-300 transition-colors"
+            >
+              <BarChart3 className="w-3.5 h-3.5" /> Module KPIs
+            </Link>
           </div>
         </div>
       </header>
