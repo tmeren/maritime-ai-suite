@@ -1,11 +1,11 @@
 /**
- * DD-Grade Report Catalog — Maritime AI Suite
+ * Analytical Report Catalog — Maritime AI Suite
  *
- * Every report template traces to a KKR DD section and maps to
+ * Every report template traces to an analytical framework section and maps to
  * a financial statement type (IS / BS / CF) for audit-grade traceability.
  *
  * Domains: Financial, Operational, Market, Strategic
- * Source: KKR DD Structure + BCG CFO Framework
+ * Source: Analytical Framework Structure + CFO Framework
  */
 
 export type FinancialStatement = 'IS' | 'BS' | 'CF'
@@ -23,8 +23,8 @@ export interface ReportTemplate {
   id: string
   name: string
   domain: Domain
-  ddSection: string
-  ddReference: string
+  analyticalSection: string
+  analyticalReference: string
   description: string
   primaryStatement: FinancialStatement
   fields: ReportField[]
@@ -32,7 +32,7 @@ export interface ReportTemplate {
 }
 
 // ─────────────────────────────────────────────────────────
-// FINANCIAL DOMAIN — KKR DD Section 7 + Section 8
+// FINANCIAL DOMAIN — Analytical Framework Section 7 + Section 8
 // ─────────────────────────────────────────────────────────
 
 export const financialReports: ReportTemplate[] = [
@@ -40,8 +40,8 @@ export const financialReports: ReportTemplate[] = [
     id: 'fin-revenue-waterfall',
     name: 'Revenue Waterfall',
     domain: 'financial',
-    ddSection: 'Section 7.1',
-    ddReference: 'KKR DD — Historical Financials: Revenue Decomposition',
+    analyticalSection: 'Section 7.1',
+    analyticalReference: 'Analytical Framework —Historical Financials: Revenue Decomposition',
     description: 'Top-line revenue breakdown by business segment, geography, and customer tier. Tracks organic vs inorganic growth with waterfall visualization.',
     primaryStatement: 'IS',
     fields: [
@@ -60,8 +60,8 @@ export const financialReports: ReportTemplate[] = [
     id: 'fin-ebitda-bridge',
     name: 'EBITDA Bridge',
     domain: 'financial',
-    ddSection: 'Section 7.2',
-    ddReference: 'KKR DD — Historical Financials: EBITDA Walk',
+    analyticalSection: 'Section 7.2',
+    analyticalReference: 'Analytical Framework —Historical Financials: EBITDA Walk',
     description: 'EBITDA bridge from prior year to current year, decomposing drivers: volume, pricing, mix, cost efficiencies, and one-off items.',
     primaryStatement: 'IS',
     fields: [
@@ -80,8 +80,8 @@ export const financialReports: ReportTemplate[] = [
     id: 'fin-cost-structure',
     name: 'Cost Structure Breakdown',
     domain: 'financial',
-    ddSection: 'Section 7.3',
-    ddReference: 'KKR DD — Historical Financials: OpEx Analysis',
+    analyticalSection: 'Section 7.3',
+    analyticalReference: 'Analytical Framework —Historical Financials: OpEx Analysis',
     description: 'Operating cost decomposition by category: labor, fuel/energy, maintenance, depreciation, and SG&A with trend analysis.',
     primaryStatement: 'IS',
     fields: [
@@ -100,8 +100,8 @@ export const financialReports: ReportTemplate[] = [
     id: 'fin-profitability',
     name: 'Profitability Analysis',
     domain: 'financial',
-    ddSection: 'Section 7.4',
-    ddReference: 'KKR DD — Historical Financials: Margin Analysis',
+    analyticalSection: 'Section 7.4',
+    analyticalReference: 'Analytical Framework —Historical Financials: Margin Analysis',
     description: 'Multi-layer profitability analysis: gross margin, EBITDA margin, EBIT margin, and net margin with peer benchmarking.',
     primaryStatement: 'IS',
     fields: [
@@ -120,8 +120,8 @@ export const financialReports: ReportTemplate[] = [
     id: 'fin-leverage-ratios',
     name: 'Leverage Ratios',
     domain: 'financial',
-    ddSection: 'Section 7.5',
-    ddReference: 'KKR DD — Historical Financials: Capital Structure',
+    analyticalSection: 'Section 7.5',
+    analyticalReference: 'Analytical Framework —Historical Financials: Capital Structure',
     description: 'Debt structure analysis: Net Debt/EBITDA, interest coverage, debt maturity profile, and covenant compliance tracking.',
     primaryStatement: 'BS',
     fields: [
@@ -140,8 +140,8 @@ export const financialReports: ReportTemplate[] = [
     id: 'fin-cashflow-projection',
     name: 'Cash Flow Projection',
     domain: 'financial',
-    ddSection: 'Section 7.6',
-    ddReference: 'KKR DD — Historical Financials: FCF Analysis',
+    analyticalSection: 'Section 7.6',
+    analyticalReference: 'Analytical Framework —Historical Financials: FCF Analysis',
     description: 'Free cash flow build-up: operating cash flow, CAPEX, working capital changes, and FCF yield with conversion analysis.',
     primaryStatement: 'CF',
     fields: [
@@ -160,8 +160,8 @@ export const financialReports: ReportTemplate[] = [
     id: 'fin-capex-planning',
     name: 'CAPEX Planning',
     domain: 'financial',
-    ddSection: 'Section 8.1',
-    ddReference: 'KKR DD — Management Plan: Capital Allocation',
+    analyticalSection: 'Section 8.1',
+    analyticalReference: 'Analytical Framework —Management Plan: Capital Allocation',
     description: 'Capital expenditure planning across maintenance, expansion, and digital transformation with IRR and payback period tracking.',
     primaryStatement: 'CF',
     fields: [
@@ -179,7 +179,7 @@ export const financialReports: ReportTemplate[] = [
 ]
 
 // ─────────────────────────────────────────────────────────
-// OPERATIONAL DOMAIN — KKR DD Section 2 + Section 5
+// OPERATIONAL DOMAIN — Analytical Framework Section 2 + Section 5
 // ─────────────────────────────────────────────────────────
 
 export const operationalReports: ReportTemplate[] = [
@@ -187,8 +187,8 @@ export const operationalReports: ReportTemplate[] = [
     id: 'ops-fleet-profile',
     name: 'Fleet Profile',
     domain: 'operational',
-    ddSection: 'Section 2.1',
-    ddReference: 'KKR DD — Company Overview: Asset Base',
+    analyticalSection: 'Section 2.1',
+    analyticalReference: 'Analytical Framework —Company Overview: Asset Base',
     description: 'Complete fleet inventory: vessel types, capacities, age profiles, ownership structure (owned vs chartered), and deployment status.',
     primaryStatement: 'BS',
     fields: [
@@ -207,8 +207,8 @@ export const operationalReports: ReportTemplate[] = [
     id: 'ops-vessel-utilization',
     name: 'Vessel Utilization',
     domain: 'operational',
-    ddSection: 'Section 2.2',
-    ddReference: 'KKR DD — Company Overview: Operational Efficiency',
+    analyticalSection: 'Section 2.2',
+    analyticalReference: 'Analytical Framework —Company Overview: Operational Efficiency',
     description: 'Vessel deployment efficiency: utilization rates by vessel type, idle time analysis, repositioning costs, and seasonal patterns.',
     primaryStatement: 'IS',
     fields: [
@@ -227,8 +227,8 @@ export const operationalReports: ReportTemplate[] = [
     id: 'ops-port-throughput',
     name: 'Port Throughput',
     domain: 'operational',
-    ddSection: 'Section 2.3',
-    ddReference: 'KKR DD — Company Overview: Port Operations',
+    analyticalSection: 'Section 2.3',
+    analyticalReference: 'Analytical Framework —Company Overview: Port Operations',
     description: 'Port throughput volumes by terminal: TEU, vehicles, bulk tonnage with berth productivity and turnaround metrics.',
     primaryStatement: 'IS',
     fields: [
@@ -247,8 +247,8 @@ export const operationalReports: ReportTemplate[] = [
     id: 'ops-intermodal-network',
     name: 'Intermodal Network',
     domain: 'operational',
-    ddSection: 'Section 2.4',
-    ddReference: 'KKR DD — Company Overview: Logistics Network',
+    analyticalSection: 'Section 2.4',
+    analyticalReference: 'Analytical Framework —Company Overview: Logistics Network',
     description: 'Intermodal connectivity analysis: truck gate movements, rail connections, ICD operations, and last-mile delivery performance.',
     primaryStatement: 'IS',
     fields: [
@@ -267,8 +267,8 @@ export const operationalReports: ReportTemplate[] = [
     id: 'ops-workforce-metrics',
     name: 'Workforce Metrics',
     domain: 'operational',
-    ddSection: 'Section 5.1',
-    ddReference: 'KKR DD — Customers: Human Capital',
+    analyticalSection: 'Section 5.1',
+    analyticalReference: 'Analytical Framework —Customers: Human Capital',
     description: 'Workforce analytics: headcount by function, productivity ratios, training hours, attrition rates, and labor cost per TEU.',
     primaryStatement: 'IS',
     fields: [
@@ -287,8 +287,8 @@ export const operationalReports: ReportTemplate[] = [
     id: 'ops-capacity-planning',
     name: 'Capacity Planning',
     domain: 'operational',
-    ddSection: 'Section 5.2',
-    ddReference: 'KKR DD — Customers: Growth Capacity',
+    analyticalSection: 'Section 5.2',
+    analyticalReference: 'Analytical Framework —Customers: Growth Capacity',
     description: 'Capacity expansion planning: current vs planned capacity, expansion timelines, investment requirements, and demand forecasts.',
     primaryStatement: 'BS',
     fields: [
@@ -306,7 +306,7 @@ export const operationalReports: ReportTemplate[] = [
 ]
 
 // ─────────────────────────────────────────────────────────
-// MARKET DOMAIN — KKR DD Section 3 + Section 4 + Section 6
+// MARKET DOMAIN — Analytical Framework Section 3 + Section 4 + Section 6
 // ─────────────────────────────────────────────────────────
 
 export const marketReports: ReportTemplate[] = [
@@ -314,8 +314,8 @@ export const marketReports: ReportTemplate[] = [
     id: 'mkt-trade-corridor',
     name: 'Trade Corridor Analysis',
     domain: 'market',
-    ddSection: 'Section 3.1',
-    ddReference: 'KKR DD — Trade: Route Economics',
+    analyticalSection: 'Section 3.1',
+    analyticalReference: 'Analytical Framework —Trade: Route Economics',
     description: 'Trade corridor volume and value analysis by route: Asia-GCC, Europe-GCC, Africa-GCC with growth trends and modal share.',
     primaryStatement: 'IS',
     fields: [
@@ -334,8 +334,8 @@ export const marketReports: ReportTemplate[] = [
     id: 'mkt-modal-share',
     name: 'Modal Share Comparison',
     domain: 'market',
-    ddSection: 'Section 3.2',
-    ddReference: 'KKR DD — Trade: Modal Split',
+    analyticalSection: 'Section 3.2',
+    analyticalReference: 'Analytical Framework —Trade: Modal Split',
     description: 'Transportation modal share analysis: maritime vs air vs land with cost-per-unit comparison and trend evolution.',
     primaryStatement: 'IS',
     fields: [
@@ -354,8 +354,8 @@ export const marketReports: ReportTemplate[] = [
     id: 'mkt-competitive-positioning',
     name: 'Competitive Positioning',
     domain: 'market',
-    ddSection: 'Section 6.1',
-    ddReference: 'KKR DD — Competitive Advantage: Market Position',
+    analyticalSection: 'Section 6.1',
+    analyticalReference: 'Analytical Framework —Competitive Advantage: Market Position',
     description: 'Competitive radar analysis: port rankings, throughput comparison, service quality benchmarks, and market share evolution.',
     primaryStatement: 'IS',
     fields: [
@@ -374,8 +374,8 @@ export const marketReports: ReportTemplate[] = [
     id: 'mkt-pricing-analysis',
     name: 'Pricing Analysis',
     domain: 'market',
-    ddSection: 'Section 6.2',
-    ddReference: 'KKR DD — Competitive Advantage: Pricing Power',
+    analyticalSection: 'Section 6.2',
+    analyticalReference: 'Analytical Framework —Competitive Advantage: Pricing Power',
     description: 'Pricing power assessment: tariff structures, rate evolution, contract vs spot mix, and price elasticity indicators.',
     primaryStatement: 'IS',
     fields: [
@@ -394,8 +394,8 @@ export const marketReports: ReportTemplate[] = [
     id: 'mkt-growth-drivers',
     name: 'Growth Driver Assessment',
     domain: 'market',
-    ddSection: 'Section 4.1',
-    ddReference: 'KKR DD — Market Growth: Leading Indicators',
+    analyticalSection: 'Section 4.1',
+    analyticalReference: 'Analytical Framework —Market Growth: Leading Indicators',
     description: 'Growth driver index: GDP correlation, trade multiplier, sector-specific demand drivers, and leading indicator dashboard.',
     primaryStatement: 'IS',
     fields: [
@@ -414,8 +414,8 @@ export const marketReports: ReportTemplate[] = [
     id: 'mkt-sector-breakdown',
     name: 'Sector Breakdown',
     domain: 'market',
-    ddSection: 'Section 4.2',
-    ddReference: 'KKR DD — Market Growth: Sector Analysis',
+    analyticalSection: 'Section 4.2',
+    analyticalReference: 'Analytical Framework —Market Growth: Sector Analysis',
     description: 'Sector-level market analysis: containerized, bulk, vehicles, energy, and specialized cargo with growth trajectories.',
     primaryStatement: 'IS',
     fields: [
@@ -433,7 +433,7 @@ export const marketReports: ReportTemplate[] = [
 ]
 
 // ─────────────────────────────────────────────────────────
-// STRATEGIC DOMAIN — KKR DD Section 8 + BCG CFO Framework
+// STRATEGIC DOMAIN — Analytical Framework Section 8 + CFO Framework
 // ─────────────────────────────────────────────────────────
 
 export const strategicReports: ReportTemplate[] = [
@@ -441,8 +441,8 @@ export const strategicReports: ReportTemplate[] = [
     id: 'str-value-creation',
     name: 'EBITDA Bridge (Value Creation)',
     domain: 'strategic',
-    ddSection: 'Section 8.1',
-    ddReference: 'KKR DD — Management Plan: Value Creation Roadmap',
+    analyticalSection: 'Section 8.1',
+    analyticalReference: 'Analytical Framework —Management Plan: Value Creation Roadmap',
     description: 'Strategic EBITDA bridge: current → target EBITDA decomposed by value levers — organic growth, M&A, cost optimization, and portfolio actions.',
     primaryStatement: 'IS',
     fields: [
@@ -461,8 +461,8 @@ export const strategicReports: ReportTemplate[] = [
     id: 'str-capex-timeline',
     name: 'CAPEX Timeline',
     domain: 'strategic',
-    ddSection: 'Section 8.2',
-    ddReference: 'KKR DD — Management Plan: Investment Program',
+    analyticalSection: 'Section 8.2',
+    analyticalReference: 'Analytical Framework —Management Plan: Investment Program',
     description: 'Multi-year CAPEX timeline with project-level detail: milestones, completion status, budget vs actual, and risk flags.',
     primaryStatement: 'CF',
     fields: [
@@ -481,8 +481,8 @@ export const strategicReports: ReportTemplate[] = [
     id: 'str-projection-scenarios',
     name: 'Projection Scenarios',
     domain: 'strategic',
-    ddSection: 'Section 8.3',
-    ddReference: 'KKR DD — Management Plan: Financial Projections',
+    analyticalSection: 'Section 8.3',
+    analyticalReference: 'Analytical Framework —Management Plan: Financial Projections',
     description: 'Three-scenario financial projections (Base, Upside, Downside) with key assumptions and sensitivity analysis.',
     primaryStatement: 'IS',
     fields: [
@@ -498,12 +498,12 @@ export const strategicReports: ReportTemplate[] = [
     tags: ['scenarios', 'projections', 'sensitivity', 'forecast'],
   },
   {
-    id: 'str-bcg-capability',
-    name: 'BCG Capability Maturity',
+    id: 'str-capability-maturity',
+    name: 'Capability Maturity',
     domain: 'strategic',
-    ddSection: 'BCG CFO Framework',
-    ddReference: 'BCG CFO Framework — Capability Assessment',
-    description: 'BCG capability maturity assessment across 6 dimensions: Digital, Commercial, Operational, Financial, People, and Innovation.',
+    analyticalSection: 'CFO Framework',
+    analyticalReference: 'CFO Framework — Capability Assessment',
+    description: 'Capability maturity assessment across 6 dimensions: Digital, Commercial, Operational, Financial, People, and Innovation.',
     primaryStatement: 'IS',
     fields: [
       { name: 'Digital Maturity', type: 'text', sampleValue: '3.8 / 5.0', financialStatement: 'IS' },
@@ -515,14 +515,14 @@ export const strategicReports: ReportTemplate[] = [
       { name: 'Overall Maturity', type: 'text', sampleValue: '3.95 / 5.0', financialStatement: 'IS' },
       { name: 'Target (2028)', type: 'text', sampleValue: '4.5 / 5.0', financialStatement: 'IS' },
     ],
-    tags: ['bcg', 'capability', 'maturity', 'assessment'],
+    tags: ['capability', 'maturity', 'assessment', 'framework'],
   },
   {
     id: 'str-bipm-dashboard',
     name: 'BiPM Dashboard',
     domain: 'strategic',
-    ddSection: 'BCG CFO Framework',
-    ddReference: 'BCG CFO Framework — Business-Integrated Performance Management',
+    analyticalSection: 'CFO Framework',
+    analyticalReference: 'CFO Framework — Business-Integrated Performance Management',
     description: 'Business-Integrated Performance Management: strategic KPI cascading from board-level to operational teams with traffic-light status.',
     primaryStatement: 'IS',
     fields: [
@@ -541,8 +541,8 @@ export const strategicReports: ReportTemplate[] = [
     id: 'str-kpi-priority',
     name: 'KPI Priority Matrix',
     domain: 'strategic',
-    ddSection: 'BCG CFO Framework',
-    ddReference: 'BCG CFO Framework — KPI Prioritization',
+    analyticalSection: 'CFO Framework',
+    analyticalReference: 'CFO Framework — KPI Prioritization',
     description: 'Strategic KPI prioritization matrix: impact vs measurability with ownership assignment and reporting cadence.',
     primaryStatement: 'IS',
     fields: [
@@ -574,29 +574,29 @@ export function getReportsByDomain(domain: Domain): ReportTemplate[] {
   return reportCatalog.filter(r => r.domain === domain)
 }
 
-export const domainMeta: Record<Domain, { label: string; description: string; ddSections: string; color: string }> = {
+export const domainMeta: Record<Domain, { label: string; description: string; analyticalSections: string; color: string }> = {
   financial: {
     label: 'Financial Analytics',
-    description: 'DD-grade financial analysis derived from KKR DD Section 7 (Historical Financials) + Section 8 (Management Plan)',
-    ddSections: 'KKR DD §7 + §8',
+    description: 'Professional-grade financial analysis derived from Analytical Framework Section 7 (Historical Financials) + Section 8 (Management Plan)',
+    analyticalSections: 'Section §7 + §8',
     color: 'text-fs-income',
   },
   operational: {
     label: 'Operational Analytics',
-    description: 'Operational intelligence derived from KKR DD Section 2 (Company) + Section 5 (Customers)',
-    ddSections: 'KKR DD §2 + §5',
+    description: 'Operational intelligence derived from Analytical Framework Section 2 (Company) + Section 5 (Customers)',
+    analyticalSections: 'Section §2 + §5',
     color: 'text-success',
   },
   market: {
     label: 'Market Analytics',
-    description: 'Market intelligence derived from KKR DD Section 3 (Trade) + Section 4 (Growth) + Section 6 (Competitive)',
-    ddSections: 'KKR DD §3 + §4 + §6',
+    description: 'Market intelligence derived from Analytical Framework Section 3 (Trade) + Section 4 (Growth) + Section 6 (Competitive)',
+    analyticalSections: 'Section §3 + §4 + §6',
     color: 'text-warning',
   },
   strategic: {
     label: 'Strategic Analytics',
-    description: 'Strategic planning derived from KKR DD Section 8 (Management Plan) + BCG CFO Framework',
-    ddSections: 'KKR DD §8 + BCG',
+    description: 'Strategic planning derived from Analytical Framework Section 8 (Management Plan) + CFO Framework',
+    analyticalSections: 'Section §8 + CFO Framework',
     color: 'text-ad-red',
   },
 }

@@ -25,7 +25,7 @@ export default function StrategicAnalytics() {
           </div>
           <div>
             <h1 className="text-xl font-bold text-text-primary font-serif">{meta.label}</h1>
-            <p className="text-xs text-text-muted">{meta.ddSections}</p>
+            <p className="text-xs text-text-muted">{meta.analyticalSections}</p>
           </div>
         </div>
         <p className="text-sm text-text-secondary leading-relaxed max-w-3xl">{meta.description}</p>

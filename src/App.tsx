@@ -1,22 +1,19 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { AppLayout } from './layouts/AppLayout'
 import { Home } from './pages/Home'
-import { PlaceholderPage } from './pages/PlaceholderPage'
 import { lazy, Suspense } from 'react'
-import {
-  ShieldAlert,
-  MessageSquare,
-  FileSearch,
-  GraduationCap,
-  HelpCircle,
-  BookOpen,
-  Trophy,
-} from 'lucide-react'
 
 const FinancialAnalytics = lazy(() => import('./pages/FinancialAnalytics'))
 const OperationalAnalytics = lazy(() => import('./pages/OperationalAnalytics'))
 const MarketAnalytics = lazy(() => import('./pages/MarketAnalytics'))
 const StrategicAnalytics = lazy(() => import('./pages/StrategicAnalytics'))
+const RiskManagement = lazy(() => import('./pages/RiskManagement'))
+const Connect = lazy(() => import('./pages/Connect'))
+const Analyse = lazy(() => import('./pages/Analyse'))
+const LearningHub = lazy(() => import('./pages/LearningHub'))
+const FAQ = lazy(() => import('./pages/FAQ'))
+const Glossary = lazy(() => import('./pages/Glossary'))
+const Trainings = lazy(() => import('./pages/Trainings'))
 
 const CarbonWise = lazy(() => import('./pages/solutions/CarbonWisePage'))
 const LoadMaster = lazy(() => import('./pages/solutions/LoadMasterPage'))
@@ -28,6 +25,27 @@ const BatteryHealth = lazy(() => import('./pages/solutions/BatteryHealth'))
 const StevedoreAI = lazy(() => import('./pages/solutions/StevedoreAI'))
 const PortFota = lazy(() => import('./pages/solutions/PortFota'))
 const SkyLink = lazy(() => import('./pages/solutions/SkyLink'))
+
+/* Module KPI Pages (S1) */
+const TradeFlowModule = lazy(() => import('./pages/modules/TradeFlowModule'))
+const VinChainModule = lazy(() => import('./pages/modules/VinChainModule'))
+const SlotBidModule = lazy(() => import('./pages/modules/SlotBidModule'))
+const BatteryHealthModule = lazy(() => import('./pages/modules/BatteryHealthModule'))
+const StevedoreModule = lazy(() => import('./pages/modules/StevedoreModule'))
+const PortFotaModule = lazy(() => import('./pages/modules/PortFotaModule'))
+const SkyLinkModule = lazy(() => import('./pages/modules/SkyLinkModule'))
+const LithiumSentinelModule = lazy(() => import('./pages/modules/LithiumSentinelModule'))
+const CruiseTurnaroundModule = lazy(() => import('./pages/modules/CruiseTurnaroundModule'))
+const DigitalTwinModule = lazy(() => import('./pages/modules/DigitalTwinModule'))
+
+/* Financial Model + Synergy Map (S2-S3) */
+const FinancialModel = lazy(() => import('./pages/FinancialModel'))
+const SynergyMap = lazy(() => import('./pages/SynergyMap'))
+
+/* Utility Modules (S4) */
+const Projects = lazy(() => import('./pages/Projects'))
+const Vault = lazy(() => import('./pages/Vault'))
+const Inbox = lazy(() => import('./pages/Inbox'))
 
 function LoadingFallback() {
   return (
@@ -47,104 +65,20 @@ export default function App() {
         <Route element={<AppLayout />}>
           <Route index element={<Home />} />
 
-          {/* DD-Grade Analytics Tabs */}
+          {/* Analytical Framework Tabs */}
           <Route path="financial" element={<Suspense fallback={<LoadingFallback />}><FinancialAnalytics /></Suspense>} />
           <Route path="operations" element={<Suspense fallback={<LoadingFallback />}><OperationalAnalytics /></Suspense>} />
           <Route path="market" element={<Suspense fallback={<LoadingFallback />}><MarketAnalytics /></Suspense>} />
           <Route path="strategic" element={<Suspense fallback={<LoadingFallback />}><StrategicAnalytics /></Suspense>} />
-          <Route path="risk" element={
-            <PlaceholderPage
-              title="Risk Management"
-              description="DD-standard risk framework with heat maps and mitigation tracking. Comprehensive risk registry across operational, financial, and strategic dimensions."
-              icon={ShieldAlert}
-              features={[
-                { title: 'Risk Heat Map', description: 'Interactive probability-impact matrix with drill-through to individual risk items and trend analysis.' },
-                { title: 'Mitigation Tracker', description: 'Action plan monitoring, owner accountability, and progress tracking against risk reduction targets.' },
-                { title: 'Compliance Dashboard', description: 'Regulatory compliance status across IMO, EU ETS, environmental, and safety frameworks.' },
-                { title: 'Early Warning System', description: 'Leading risk indicators with automated alerts and escalation workflows.' },
-              ]}
-            />
-          } />
-          <Route path="connect" element={
-            <PlaceholderPage
-              title="Connect Hub"
-              description="Domain-organized collaboration channels for cross-functional communication and knowledge sharing."
-              icon={MessageSquare}
-              features={[
-                { title: 'Domain Channels', description: 'Organized discussion threads per business domain: Operations, Finance, Strategy, and Technology.' },
-                { title: 'Expert Directory', description: 'Find and connect with subject matter experts across the organization.' },
-                { title: 'Announcement Board', description: 'Platform-wide updates, policy changes, and strategic communications.' },
-                { title: 'Document Sharing', description: 'Secure file sharing with version control and access management.' },
-              ]}
-            />
-          } />
-          <Route path="analyse" element={
-            <PlaceholderPage
-              title="Analysis Center"
-              description="Report generation workspace with 24 DD-grade templates. Create, customize, and export professional analytical reports."
-              icon={FileSearch}
-              features={[
-                { title: 'Report Templates', description: '24 pre-built DD-grade templates covering financial, operational, market, and strategic analysis.' },
-                { title: 'Custom Builder', description: 'Drag-and-drop report builder with KPI widgets, charts, and narrative sections.' },
-                { title: 'Export Engine', description: 'PDF, Excel, and PowerPoint export with branded formatting and appendix generation.' },
-                { title: 'Schedule & Distribute', description: 'Automated report scheduling with email distribution and stakeholder access management.' },
-              ]}
-            />
-          } />
-          <Route path="learning" element={
-            <PlaceholderPage
-              title="Learning Center"
-              description="Solution and capability learning paths. Structured programs for platform mastery and domain expertise development."
-              icon={GraduationCap}
-              features={[
-                { title: 'Learning Paths', description: 'Curated courses from beginner to advanced across all 10 Port AI Solutions.' },
-                { title: 'Video Tutorials', description: 'Step-by-step video guides for platform features and analytical workflows.' },
-                { title: 'Knowledge Base', description: 'Searchable documentation with real-world examples and best practices.' },
-                { title: 'Certification Tracks', description: 'Professional certification programs with assessments and digital credentials.' },
-              ]}
-            />
-          } />
-          <Route path="faq" element={
-            <PlaceholderPage
-              title="FAQ"
-              description="KPI definitions, methodology explanations, and platform guidance. Everything you need to understand the Maritime AI Suite."
-              icon={HelpCircle}
-              features={[
-                { title: 'KPI Dictionary', description: 'Complete definitions for all 24 executive KPIs with calculation methodologies and data sources.' },
-                { title: 'Platform Guide', description: 'Step-by-step instructions for common tasks, navigation, and feature usage.' },
-                { title: 'Methodology Notes', description: 'Detailed explanations of analytical approaches, assumptions, and limitation disclosures.' },
-                { title: 'Troubleshooting', description: 'Common issues, error resolution guides, and support contact information.' },
-              ]}
-            />
-          } />
-          <Route path="glossary" element={
-            <PlaceholderPage
-              title="Glossary"
-              description="DD field definitions with IS/BS/CF mappings. Comprehensive terminology reference for due diligence and financial analysis."
-              icon={BookOpen}
-              features={[
-                { title: 'Financial Terms', description: 'GAAP/IFRS terminology with practical definitions and IS/BS/CF statement mapping.' },
-                { title: 'Maritime Terms', description: 'Industry-specific terminology covering vessel operations, port logistics, and trade.' },
-                { title: 'DD Framework', description: 'Due diligence specific terms, workstream definitions, and quality standards.' },
-                { title: 'Acronym Index', description: 'Alphabetical index of all abbreviations used across the platform.' },
-              ]}
-            />
-          } />
-          <Route path="trainings" element={
-            <PlaceholderPage
-              title="Training Programs"
-              description="Framework comprehension quizzes and achievement tracking. Test your knowledge and earn certifications."
-              icon={Trophy}
-              features={[
-                { title: 'Assessment Center', description: 'Interactive quizzes testing knowledge of KPIs, methodologies, and platform capabilities.' },
-                { title: 'Progress Tracking', description: 'Personal dashboard showing completion rates, scores, and learning streaks.' },
-                { title: 'Team Leaderboard', description: 'Organization-wide rankings and team performance comparison.' },
-                { title: 'Achievement Badges', description: 'Digital credentials for completing modules, passing assessments, and reaching milestones.' },
-              ]}
-            />
-          } />
+          <Route path="risk" element={<Suspense fallback={<LoadingFallback />}><RiskManagement /></Suspense>} />
+          <Route path="connect" element={<Suspense fallback={<LoadingFallback />}><Connect /></Suspense>} />
+          <Route path="analyse" element={<Suspense fallback={<LoadingFallback />}><Analyse /></Suspense>} />
+          <Route path="learning" element={<Suspense fallback={<LoadingFallback />}><LearningHub /></Suspense>} />
+          <Route path="faq" element={<Suspense fallback={<LoadingFallback />}><FAQ /></Suspense>} />
+          <Route path="glossary" element={<Suspense fallback={<LoadingFallback />}><Glossary /></Suspense>} />
+          <Route path="trainings" element={<Suspense fallback={<LoadingFallback />}><Trainings /></Suspense>} />
 
-          {/* Port AI Solutions */}
+          {/* Port AI Solutions (Interactive Demos) */}
           <Route path="solutions/carbon-wise" element={<Suspense fallback={<LoadingFallback />}><CarbonWise /></Suspense>} />
           <Route path="solutions/load-master" element={<Suspense fallback={<LoadingFallback />}><LoadMaster /></Suspense>} />
           <Route path="solutions/lithium-sentinel" element={<Suspense fallback={<LoadingFallback />}><LithiumSentinel /></Suspense>} />
@@ -155,6 +89,27 @@ export default function App() {
           <Route path="solutions/stevedore-ai" element={<Suspense fallback={<LoadingFallback />}><StevedoreAI /></Suspense>} />
           <Route path="solutions/port-fota" element={<Suspense fallback={<LoadingFallback />}><PortFota /></Suspense>} />
           <Route path="solutions/sky-link" element={<Suspense fallback={<LoadingFallback />}><SkyLink /></Suspense>} />
+
+          {/* Module KPI Pages */}
+          <Route path="modules/trade-flow-oracle" element={<Suspense fallback={<LoadingFallback />}><TradeFlowModule /></Suspense>} />
+          <Route path="modules/vin-chain" element={<Suspense fallback={<LoadingFallback />}><VinChainModule /></Suspense>} />
+          <Route path="modules/slot-bid" element={<Suspense fallback={<LoadingFallback />}><SlotBidModule /></Suspense>} />
+          <Route path="modules/battery-health" element={<Suspense fallback={<LoadingFallback />}><BatteryHealthModule /></Suspense>} />
+          <Route path="modules/stevedore-ai" element={<Suspense fallback={<LoadingFallback />}><StevedoreModule /></Suspense>} />
+          <Route path="modules/port-fota" element={<Suspense fallback={<LoadingFallback />}><PortFotaModule /></Suspense>} />
+          <Route path="modules/sky-link" element={<Suspense fallback={<LoadingFallback />}><SkyLinkModule /></Suspense>} />
+          <Route path="modules/lithium-sentinel" element={<Suspense fallback={<LoadingFallback />}><LithiumSentinelModule /></Suspense>} />
+          <Route path="modules/cruise-turnaround" element={<Suspense fallback={<LoadingFallback />}><CruiseTurnaroundModule /></Suspense>} />
+          <Route path="modules/digital-twin" element={<Suspense fallback={<LoadingFallback />}><DigitalTwinModule /></Suspense>} />
+
+          {/* Financial Model + Synergy Map */}
+          <Route path="financial-model" element={<Suspense fallback={<LoadingFallback />}><FinancialModel /></Suspense>} />
+          <Route path="synergy-map" element={<Suspense fallback={<LoadingFallback />}><SynergyMap /></Suspense>} />
+
+          {/* Utility Modules */}
+          <Route path="projects" element={<Suspense fallback={<LoadingFallback />}><Projects /></Suspense>} />
+          <Route path="vault" element={<Suspense fallback={<LoadingFallback />}><Vault /></Suspense>} />
+          <Route path="inbox" element={<Suspense fallback={<LoadingFallback />}><Inbox /></Suspense>} />
 
           <Route path="*" element={<Navigate to="/" replace />} />
         </Route>

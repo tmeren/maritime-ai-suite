@@ -16,10 +16,10 @@ const contextGreetings: Record<string, string> = {
   '/strategic': 'I can assist with strategic planning, value creation roadmaps, and CAPEX analysis.',
   '/risk': 'I can help with risk assessments, heat map analysis, and mitigation tracking.',
   '/connect': 'I can help you navigate collaboration channels and domain-organized discussions.',
-  '/analyse': 'I can assist with report generation, DD-grade templates, and analytical workflows.',
+  '/analyse': 'I can assist with report generation, analytical templates, and workflows.',
   '/learning': 'I can guide you through learning paths and capability development programs.',
   '/faq': 'I can help answer questions about KPI definitions, methodologies, and platform guidance.',
-  '/glossary': 'I can help you look up DD field definitions and IS/BS/CF mappings.',
+  '/glossary': 'I can help you look up analytical field definitions and IS/BS/CF mappings.',
   '/trainings': 'I can guide you through training programs and achievement tracking.',
 }
 
@@ -40,7 +40,7 @@ const contextSuggestions: Record<string, string[]> = {
   '/': [
     'Show me the top financial KPIs for this quarter.',
     'Which port AI solutions are available?',
-    'How do I navigate between DD report domains?',
+    'How do I navigate between analytical report domains?',
   ],
   '/financial': [
     'Explain the difference between IS, BS, and CF metrics.',
@@ -74,13 +74,13 @@ function getSuggestions(pathname: string): string[] {
   if (pathname.startsWith('/solutions/')) {
     return [
       'What are the key metrics for this solution?',
-      'How does this integrate with the DD framework?',
+      'How does this integrate with the analytical framework?',
       'Show me the data flow architecture.',
     ]
   }
   return [
     'Tell me about the available modules.',
-    'How do I generate a DD report?',
+    'How do I generate an analytical report?',
     'What AI solutions are integrated?',
   ]
 }
@@ -88,11 +88,11 @@ function getSuggestions(pathname: string): string[] {
 function getMockResponse(userMessage: string, pathname: string): string {
   const lower = userMessage.toLowerCase()
   if (lower.includes('kpi') || lower.includes('metric'))
-    return 'The Maritime AI Suite tracks 24 executive KPIs across 4 domains: Financial (IS/BS/CF), Operational, Market, and Strategic. Each metric maps to a specific financial statement for DD-grade traceability.'
+    return 'The Maritime AI Suite tracks 24 executive KPIs across 4 domains: Financial (IS/BS/CF), Operational, Market, and Strategic. Each metric maps to a specific financial statement for audit-grade traceability.'
   if (lower.includes('solution') || lower.includes('ai'))
     return 'There are 10 Port AI Solutions available: CarbonWise, LoadMaster, LithiumSentinel, VinChain, TradeFlow Oracle, SlotBid, BatteryHealth, StevedoreAI, PortFOTA, and SkyLink. Each addresses a specific operational domain.'
-  if (lower.includes('report') || lower.includes('dd'))
-    return 'The Analyse module provides 24 DD-grade report templates. Reports pull from real-time KPI data and can be exported in PDF format with IS/BS/CF audit trails.'
+  if (lower.includes('report') || lower.includes('analytical'))
+    return 'The Analyse module provides 24 professional-grade report templates. Reports pull from real-time KPI data and can be exported in PDF format with IS/BS/CF audit trails.'
   if (lower.includes('financial') || lower.includes('revenue'))
     return 'Financial metrics are organized by statement type: Income Statement (blue), Balance Sheet (green), and Cash Flow (amber). Each KPI card shows the statement badge for instant traceability.'
   if (pathname.startsWith('/solutions/'))

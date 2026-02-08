@@ -28,6 +28,11 @@ import {
   Cpu,
   Radio,
   Plane,
+  Layers,
+  Network,
+  FolderKanban,
+  Shield,
+  Bell,
 } from 'lucide-react'
 
 interface SidebarProps {
@@ -69,10 +74,21 @@ const solutionItems: NavItem[] = [
   { label: 'SkyLink', path: '/solutions/sky-link', icon: <Plane size={18} /> },
 ]
 
+const integrationItems: NavItem[] = [
+  { label: 'Financial Model', path: '/financial-model', icon: <Layers size={18} /> },
+  { label: 'Synergy Map', path: '/synergy-map', icon: <Network size={18} /> },
+]
+
+const utilityItems: NavItem[] = [
+  { label: 'Projects', path: '/projects', icon: <FolderKanban size={20} /> },
+  { label: 'Vault', path: '/vault', icon: <Shield size={20} /> },
+  { label: 'Inbox', path: '/inbox', icon: <Bell size={20} /> },
+]
+
 export function Sidebar({ collapsed, onToggle }: SidebarProps) {
   const [solutionsOpen, setSolutionsOpen] = useState(true)
   const location = useLocation()
-  const isSolutionActive = location.pathname.startsWith('/solutions')
+  const isSolutionActive = location.pathname.startsWith('/solutions') || location.pathname.startsWith('/modules')
 
   return (
     <aside
@@ -169,6 +185,64 @@ export function Sidebar({ collapsed, onToggle }: SidebarProps) {
               ))}
             </div>
           )}
+        </div>
+
+        {/* Divider */}
+        <div className="my-3 mx-3 border-t border-sidebar-border" />
+
+        {/* Integration Views */}
+        {!collapsed && (
+          <div className="mb-1 px-3">
+            <span className="text-[10px] font-semibold text-sidebar-text uppercase tracking-wider">Integration</span>
+          </div>
+        )}
+        <div className="space-y-0.5">
+          {integrationItems.map((item) => (
+            <NavLink
+              key={item.path}
+              to={item.path}
+              className={({ isActive }) =>
+                `flex items-center gap-3 px-3 py-2 rounded-lg text-sm transition-colors ${
+                  isActive
+                    ? 'bg-sidebar-active text-sidebar-text-active font-medium border-l-[3px] border-ad-red'
+                    : 'text-sidebar-text hover:bg-sidebar-hover hover:text-sidebar-text-active border-l-[3px] border-transparent'
+                }`
+              }
+              title={collapsed ? item.label : undefined}
+            >
+              <span className="shrink-0">{item.icon}</span>
+              {!collapsed && <span className="truncate">{item.label}</span>}
+            </NavLink>
+          ))}
+        </div>
+
+        {/* Divider */}
+        <div className="my-3 mx-3 border-t border-sidebar-border" />
+
+        {/* Utility Modules */}
+        {!collapsed && (
+          <div className="mb-1 px-3">
+            <span className="text-[10px] font-semibold text-sidebar-text uppercase tracking-wider">Workspace</span>
+          </div>
+        )}
+        <div className="space-y-0.5">
+          {utilityItems.map((item) => (
+            <NavLink
+              key={item.path}
+              to={item.path}
+              className={({ isActive }) =>
+                `flex items-center gap-3 px-3 py-2 rounded-lg text-sm transition-colors ${
+                  isActive
+                    ? 'bg-sidebar-active text-sidebar-text-active font-medium border-l-[3px] border-ad-red'
+                    : 'text-sidebar-text hover:bg-sidebar-hover hover:text-sidebar-text-active border-l-[3px] border-transparent'
+                }`
+              }
+              title={collapsed ? item.label : undefined}
+            >
+              <span className="shrink-0">{item.icon}</span>
+              {!collapsed && <span className="truncate">{item.label}</span>}
+            </NavLink>
+          ))}
         </div>
       </nav>
 

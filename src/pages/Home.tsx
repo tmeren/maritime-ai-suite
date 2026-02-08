@@ -205,7 +205,7 @@ export function Home() {
       {/* Footer Note */}
       <div className="mt-8 text-center">
         <p className="text-xs text-text-muted">
-          Reporting structure adopted from DD-grade analytical frameworks · All data sanitized for AD Ports Group context
+          Reporting structure adopted from professional-grade analytical frameworks · All data sanitized for AD Ports Group context
         </p>
         <div className="flex items-center justify-center gap-4 mt-2">
           <span className="inline-flex items-center gap-1 text-[10px] font-bold px-2 py-0.5 rounded bg-fs-income text-white">IS</span>

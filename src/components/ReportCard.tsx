@@ -27,7 +27,7 @@ export function ReportCard({ report }: ReportCardProps) {
             </div>
             <div>
               <h3 className="text-sm font-semibold text-text-primary leading-tight">{report.name}</h3>
-              <p className="text-[11px] text-text-muted mt-0.5">{report.ddSection} — {report.ddReference.split(':')[0]}</p>
+              <p className="text-[11px] text-text-muted mt-0.5">{report.analyticalSection} — {report.analyticalReference.split(':')[0]}</p>
             </div>
           </div>
           <span className={`text-[10px] font-bold px-2 py-0.5 rounded text-white shrink-0 ${badge.bg}`}>
