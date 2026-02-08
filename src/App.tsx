@@ -15,6 +15,7 @@ const FAQ = lazy(() => import('./pages/FAQ'))
 const Glossary = lazy(() => import('./pages/Glossary'))
 const Trainings = lazy(() => import('./pages/Trainings'))
 
+const Solutions = lazy(() => import('./pages/Solutions'))
 const CarbonWise = lazy(() => import('./pages/solutions/CarbonWisePage'))
 const LoadMaster = lazy(() => import('./pages/solutions/LoadMasterPage'))
 const LithiumSentinel = lazy(() => import('./pages/solutions/LithiumSentinel'))
@@ -79,6 +80,7 @@ export default function App() {
           <Route path="trainings" element={<Suspense fallback={<LoadingFallback />}><Trainings /></Suspense>} />
 
           {/* Port AI Solutions (Interactive Demos) */}
+          <Route path="solutions" element={<Suspense fallback={<LoadingFallback />}><Solutions /></Suspense>} />
           <Route path="solutions/carbon-wise" element={<Suspense fallback={<LoadingFallback />}><CarbonWise /></Suspense>} />
           <Route path="solutions/load-master" element={<Suspense fallback={<LoadingFallback />}><LoadMaster /></Suspense>} />
           <Route path="solutions/lithium-sentinel" element={<Suspense fallback={<LoadingFallback />}><LithiumSentinel /></Suspense>} />

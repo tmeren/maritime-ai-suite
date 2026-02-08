@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { NavLink, useLocation } from 'react-router-dom'
+import { NavLink, useLocation, useNavigate } from 'react-router-dom'
 import {
   LayoutDashboard,
   DollarSign,
@@ -88,6 +88,7 @@ const utilityItems: NavItem[] = [
 export function Sidebar({ collapsed, onToggle }: SidebarProps) {
   const [solutionsOpen, setSolutionsOpen] = useState(true)
   const location = useLocation()
+  const navigate = useNavigate()
   const isSolutionActive = location.pathname.startsWith('/solutions') || location.pathname.startsWith('/modules')
 
   return (
@@ -139,31 +140,37 @@ export function Sidebar({ collapsed, onToggle }: SidebarProps) {
 
         {/* Port AI Solutions - Collapsible */}
         <div>
-          <button
-            onClick={() => {
-              if (collapsed) {
-                onToggle()
-                setSolutionsOpen(true)
-              } else {
-                setSolutionsOpen(!solutionsOpen)
-              }
-            }}
+          <div
             className={`w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm transition-colors ${
               isSolutionActive
                 ? 'text-ad-red font-medium'
                 : 'text-sidebar-text hover:bg-sidebar-hover hover:text-sidebar-text-active'
             }`}
           >
-            <Anchor size={20} className="shrink-0" />
+            <button
+              onClick={() => {
+                if (collapsed) {
+                  onToggle()
+                  setSolutionsOpen(true)
+                } else {
+                  navigate('/solutions')
+                }
+              }}
+              className="flex items-center gap-3 flex-1 min-w-0"
+              title={collapsed ? 'Port AI Solutions' : undefined}
+            >
+              <Anchor size={20} className="shrink-0" />
+              {!collapsed && <span className="flex-1 text-left truncate">Port AI Solutions</span>}
+            </button>
             {!collapsed && (
-              <>
-                <span className="flex-1 text-left truncate">Port AI Solutions</span>
-                <span className="shrink-0">
-                  {solutionsOpen ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
-                </span>
-              </>
+              <button
+                onClick={() => setSolutionsOpen(!solutionsOpen)}
+                className="shrink-0 p-0.5 rounded hover:bg-sidebar-active transition-colors"
+              >
+                {solutionsOpen ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
+              </button>
             )}
-          </button>
+          </div>
 
           {!collapsed && solutionsOpen && (
             <div className="mt-1 ml-4 pl-3 border-l border-sidebar-border space-y-0.5">
